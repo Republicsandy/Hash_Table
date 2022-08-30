@@ -14,17 +14,17 @@ namespace Hash_Table_Programs
             //using split function , split is mainly used to split string based on the delimiters passed to the string
             string[] paragraphSentence = sentence.Split(' ');
             //gets the length of array string
-            int SLength = paragraphSentence.Length;
+            int StringLength = paragraphSentence.Length;
             // Itreating along each word and adding it to hash set
-            for (int i = 0; i < SLength; i++)
+            for (int i = 0; i < StringLength; i++)
             {
                 hashtable.Add(Convert.ToString(i), paragraphSentence[i]);
             }
-            //iterating through each loop to get the frequency of each word in the sentence
-            foreach (string word in paragraphSentence)
-            {
-                hashtable.GetFrequency(word);
-            }
+            Console.WriteLine(" ");
+            Console.WriteLine("Removing the word 'avoidable' from the hash table ");
+            Console.WriteLine("Frequency of 'avoidable' before removal is :" + hashtable.GetFrequency("avoidable"));
+            hashtable.RemoveValue("avoidable");
+            Console.WriteLine("Frequency of 'avoidable' after removal is :" + hashtable.GetFrequency("avoidable"));
             Console.ReadLine();
         }
     }

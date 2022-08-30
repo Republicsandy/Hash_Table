@@ -65,7 +65,7 @@ namespace Hash_Table_Programs
             keyValue<K, V> item = new keyValue<K, V>() { key = key, value = value };
             //adds the key to the list 
             linkedlist.AddLast(item);
-            Console.WriteLine(item.value + " :- is Added at Index : " + item.key);
+           // Console.WriteLine(item.value + " :- is Added at Index : " + item.key);
         }
         public void Remove(K key)
         {
@@ -96,19 +96,46 @@ namespace Hash_Table_Programs
             {
                 // checking if key is not null 
                 if (list == null)
+                {
                     continue;
+                }
                 // iterating using the foreach loop to get the value of the item in linked list
                 foreach (keyValue<K, V> obj in list)
                 {
                     if (obj.Equals(null))
+                    {
                         continue;
+                    }
                     if (obj.value.Equals(value))
+                    {
                         frequency++;
+                    }
                 }
             }
             Console.WriteLine(" ");
             Console.WriteLine("Word '{0}' appears {1} times", value, frequency);
             return frequency;
+        }
+        public void RemoveValue(V value)
+        {
+            // Iterating through foreach loop to get the key value pair in the list
+            foreach (LinkedList<keyValue<K, V>> list in items)
+            {
+                if (list == null)
+                    continue;
+                // iterating through loop to get each object in the list
+                foreach (keyValue<K, V> obj in list)
+                {
+                    if (obj.Equals(null))
+                        continue;
+                    // if the object matches the value then it will be removed
+                    if (obj.value.Equals(value))
+                    {
+                        Remove(obj.key);
+                        break;
+                    }
+                }
+            }
         }
     }
 }
