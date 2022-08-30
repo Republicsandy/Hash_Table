@@ -9,15 +9,23 @@ namespace Hash_Table_Programs
             Console.WriteLine("Hello, Welcome to HashTable!");
             //creating an object of mapnode class
             My_Map_Node<string, string> hashtable = new My_Map_Node<string, string>(5);
-            hashtable.Add("0", "To");
-            hashtable.Add("1", "be");
-            hashtable.Add("2", "or");
-            hashtable.Add("3", "not");
-            hashtable.Add("4", "To");
-            hashtable.Add("5", "be");
-            hashtable.GetFrequency("To");
-            string hash5 = hashtable.Get("5");
-            Console.WriteLine("5th index value: " + hash5);
+            //storing the sentence in paragraph variable
+            String sentence = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+            //using split function , split is mainly used to split string based on the delimiters passed to the string
+            string[] paragraphSentence = sentence.Split(' ');
+            //gets the length of array string
+            int SLength = paragraphSentence.Length;
+            // Itreating along each word and adding it to hash set
+            for (int i = 0; i < SLength; i++)
+            {
+                hashtable.Add(Convert.ToString(i), paragraphSentence[i]);
+            }
+            //iterating through each loop to get the frequency of each word in the sentence
+            foreach (string word in paragraphSentence)
+            {
+                hashtable.GetFrequency(word);
+            }
+            Console.ReadLine();
         }
     }
 }

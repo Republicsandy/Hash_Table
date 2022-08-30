@@ -20,6 +20,7 @@ namespace Hash_Table_Programs
         {
             public k key { get; set; }
             public v value { get; set; }
+            public int Frequency { get; set; }
         }
         protected LinkedList<keyValue<K, V>> GetLinkedlist(int position)
         {
@@ -58,10 +59,13 @@ namespace Hash_Table_Programs
         }
         public void Add(K key, V value)
         {
+            //gets the psotion of key
             int position = GetArrayPosition(key);
             LinkedList<keyValue<K, V>> linkedlist = GetLinkedlist(position);
             keyValue<K, V> item = new keyValue<K, V>() { key = key, value = value };
+            //adds the key to the list 
             linkedlist.AddLast(item);
+            Console.WriteLine(item.value + " :- is Added at Index : " + item.key);
         }
         public void Remove(K key)
         {
@@ -84,7 +88,7 @@ namespace Hash_Table_Programs
         }
 
         // UC 1 : Prints the frequency of the specified value in the hashtable.        
-        public void GetFrequency(V value)
+        public int GetFrequency(V value)
         {
             int frequency = 0;
             // Iterating using the foreach loop to get the key value of each item
@@ -102,7 +106,9 @@ namespace Hash_Table_Programs
                         frequency++;
                 }
             }
-            Console.WriteLine("Frequency of {0} is {1}", value, frequency);
+            Console.WriteLine(" ");
+            Console.WriteLine("Word '{0}' appears {1} times", value, frequency);
+            return frequency;
         }
     }
 }
